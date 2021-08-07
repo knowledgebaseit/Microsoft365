@@ -1,7 +1,7 @@
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
 if (Get-Module -ListAvailable -Name AzureADPreview) {
-    Write-Host "AzureADPreview Already Installed"
+    Write-Host "AzureAD Already Installed"
 } 
 else {
     try {
@@ -13,7 +13,7 @@ else {
     }
 }
 
-Import-Module AzureADPreview
+Import-Module AzureAD
 Connect-AzureAD
 
 $Domain = Get-AzureADDomain | where {($_.name -like '*.onmicrosoft.com')}
