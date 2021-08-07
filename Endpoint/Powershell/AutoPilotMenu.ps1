@@ -5,7 +5,7 @@ if (Get-Module -ListAvailable -Name AzureADPreview) {
 } 
 else {
     try {
-        Install-Module -Name AzureADPreview -AllowClobber -Confirm:$False -Force  
+        Install-Module -Name AzureAD -AllowClobber -Confirm:$False -Force  
     }
     catch [Exception] {
         $_.message 
