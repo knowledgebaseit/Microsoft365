@@ -26,6 +26,32 @@ else {
     }
 }
 
+if (Get-Module -ListAvailable -Name PSIntuneAuth) {
+    Write-Host "PSIntuneAuth Already Installed"
+} 
+else {
+    try {
+        Install-Module -Name PSIntuneAuth -AllowClobber -Confirm:$False -Force  
+    }
+    catch [Exception] {
+        $_.message 
+        exit
+    }
+}
+
+if (Get-InstalledScript -Name Upload-WindowsAutopilotDeviceInfo) {
+    Write-Host "Upload-WindowsAutopilotDeviceInfo Already Installed"
+} 
+else {
+    try {
+        Install-Script -Name Upload-WindowsAutopilotDeviceInfo -force  
+    }
+    catch [Exception] {
+        $_.message 
+        exit
+    }
+}
+
 Import-Module AzureAD
 Connect-AzureAD
 
@@ -85,12 +111,6 @@ if ($result -eq [System.Windows.Forms.DialogResult]::OK)
     $x = $listBox.SelectedItem
  
     Write-Host "Adding the device as $($x)"
- 
-    # Check if AutoPilotScript is installed
-    $InstalledScripts = Get-InstalledScript
-    If ($InstalledScripts.name -notcontains "Upload-WindowsAutopilotDeviceInfo") {
-       Install-Script -Name Upload-WindowsAutopilotDeviceInfo -force
-    }
         
     # collect Windows Autopilot info and Upload it to Azure
     Upload-WindowsAutopilotDeviceInfo.ps1 -TenantName $Tenantname -GroupTag $x -Verbose
