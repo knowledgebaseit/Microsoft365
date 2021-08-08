@@ -1,5 +1,18 @@
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
+if (Get-PackageProvider -ListAvailable -Name NuGet -ErrorAction SilentlyContinue) {
+    Write-Host "NuGet Already Installed"
+} 
+else {
+    try {
+        Install-PackageProvider -Name NuGet -Confirm:$False -Force  
+    }
+    catch [Exception] {
+        $_.message 
+        exit
+    }
+}
+
 if (Get-Module -ListAvailable -Name AzureAD) {
     Write-Host "AzureAD Already Installed"
 } 
