@@ -39,7 +39,7 @@ else {
     }
 }
 
-if (Get-InstalledScript -Name Upload-WindowsAutopilotDeviceInfo) {
+if (Get-InstalledScript -Name Upload-WindowsAutopilotDeviceInfo -ErrorAction SilentlyContinue) {
     Write-Host "Upload-WindowsAutopilotDeviceInfo Already Installed"
 } 
 else {
