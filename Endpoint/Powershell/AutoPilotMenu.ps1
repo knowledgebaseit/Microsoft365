@@ -1,6 +1,6 @@
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
-if (Get-Module -ListAvailable -Name AzureADPreview) {
+if (Get-Module -ListAvailable -Name AzureAD) {
     Write-Host "AzureAD Already Installed"
 } 
 else {
