@@ -70,7 +70,7 @@ else {
 Import-Module AzureAD
 Connect-AzureAD
 
-$Domain = Get-AzureADDomain | where {($_.name -like '*.onmicrosoft.com')}
+$Domain = Get-AzureADDomain | Where-Object { $_.Name -like "*.onmicrosoft.com" -and $_.IsInitial -eq $true}
 $Onmicrosoft = $Domain.Name
 
 $Tenantname = $Onmicrosoft
