@@ -74,7 +74,7 @@ $Domain = Get-AzureADDomain | Where-Object { $_.Name -like "*.onmicrosoft.com" -
 $Onmicrosoft = $Domain.Name
 
 $Tenantname = $Onmicrosoft
-$GroupTags = "VM","Shared","Personal"
+$GroupTags = "VM","Shared","Personal","Laptop"
 
 Add-Type -AssemblyName System.Windows.Forms
 Add-Type -AssemblyName System.Drawing
