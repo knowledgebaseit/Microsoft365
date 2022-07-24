@@ -1,18 +1,4 @@
-<#Author       : Dennis Westerman
-# Creation Date: 2021-08-07
-# Usage        : AutoPilotMenu to add Grouptag to a AutoPilot Device
-#*********************************************************************************
-# Date                  Version     Changes
-#------------------------------------------------------------------------
-# 2021-08-07            1.0         Intial Version
-#
-#*********************************************************************************
-#
-#>
-
-##########################################
-#    Install.ps1    #
-##########################################
+# AutoPilotMenu.ps1 #
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
 if (Get-PackageProvider -ListAvailable -Name NuGet -ErrorAction SilentlyContinue) {
